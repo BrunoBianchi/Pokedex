@@ -1,0 +1,33 @@
+:root {
+    --branco:#FFF;
+    --primary-color:#262835;
+    --secundary-color:#ff5473;
+    --cinza:#EFEFEF;
+    --water:#54c0ff;
+    --bug:#daff54;
+    --dark:#ff9554;
+    --dragon:#9b54ff;
+    --eletric:#fff154;
+    --fairy:#ff54e0;
+    --figthing:#ffa754;
+    --fire:#ff5473;
+    --flying:#5493ff;
+    --ghost:#7654ff;
+    --grass:#54ff5c;
+    --ground:#ffc954;
+    --ice:#54ffff;
+    --normal:$cinza;
+    --poison:#cc54ff;
+    --psychic:#ff54bb;
+    --rock:#fcab6d;
+    --steel:#d3c0b1;
+    --water:#549bff;
+}
+@function rem-calc($size) {
+    $value:$size/16;
+    @return #{$value}rem;
+}
+@function poke-color($value) {
+    
+    @return #{value}
+}
