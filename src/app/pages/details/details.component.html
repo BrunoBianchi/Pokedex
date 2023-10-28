@@ -2,8 +2,9 @@
 <app-poke-header></app-poke-header>
 
 <main>
-
   <ng-template [ngIf]="isLoading">
+    <title>Pokedex - {{pokemon[0].name.toUpperCase()}}</title>
+
     <section class="pokemon__names">
       <h1 class="slideInLeft">{{pokemon[0].name}}</h1>
       <h2 class="slideInRight">{{pokemon[1].names[0].name}}</h2>
@@ -37,6 +38,7 @@
     </section>
     <section class="similar">
         <h1>Pokemon Similares: </h1>
+        <app-poke-similar></app-poke-similar>
     </section>
   </ng-template>
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnChanges, OnInit } from '@angular/core';
 import { PokeApiService } from 'src/app/service/poke-api.service';
 
 @Component({
@@ -7,8 +7,13 @@ import { PokeApiService } from 'src/app/service/poke-api.service';
   styleUrls: ['./poke-list.component.scss']
 })
 export class PokeListComponent implements OnInit {
-  private setAllPokemons:any;
+    private setAllPokemons:any;
     public getAllPokemons:any;
+    public pokeArray:any;
+    public index:number = 1;
+    public loading:boolean = false;
+    public loadTxt:string = "Carregar Mais";
+    public filterString:string="";
     constructor(private pokeApiService:PokeApiService) {
 
     }
@@ -70,17 +75,38 @@ export class PokeListComponent implements OnInit {
       return;
     }
     public getSearch(value:any) {
+      this.filterString = value;
       const filter = this.setAllPokemons.filter((res:any)=>{
         return !res.name.indexOf(value.toLowerCase());
-      })
+      }).slice(0,6);
       this.getAllPokemons = filter;
+    }
+    public loadMore(filter?:string) {
+      this.loading = true;
+      this.loadTxt = "Carregando ...";
+      setTimeout(()=>{
+        this.index++;
+        if(filter == "") {
+          this.getAllPokemons = this.pokeArray.slice(0,6*this.index);
+        }else {
+          this.getAllPokemons = this.pokeArray.filter((poke:any)=>{
+            return !poke.name.indexOf(filter?.toLowerCase());
+          }).slice(0,6*this.index);
+        }
+
+        this.loading = false;
+        this.loadTxt = "Carregar Mais";
+      },1100);
+
     }
     ngOnInit(): void {
       this.pokeApiService.apiListAllPokemons.subscribe(
         res=> {
+          this.pokeArray = res.results;
           this.setAllPokemons = res.results;
-          this.getAllPokemons = res.results;
+          this.getAllPokemons = res.results.slice(0,6);
         }
         )
     }
+
 }

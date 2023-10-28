@@ -32,8 +32,5 @@ export class DetailsComponent implements OnInit {
         error=>{this.apiError = true}
       )
     }
-    get similar() {
-      
-      return ;
-    }
+
 }

@@ -17,4 +17,11 @@
         </a>
     </ng-template>
   </section>
+  <section class="loadmore">
+    <span>
+        <img class="pokeball disable" [ngClass]="{'disable':!loading}" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/800px-Pok%C3%A9_Ball_icon.svg.png">
+        <button (click)="loadMore(filterString)">{{loadTxt}}</button>
+    </span>
+
+  </section>
 

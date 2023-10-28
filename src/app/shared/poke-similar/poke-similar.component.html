@@ -1,0 +1,15 @@
+<main>
+    <ul>
+        <li *ngFor="let poke of pokemon">
+            <a href="/details/{{poke.nome}}" class="pokemon" *ngIf="poke">
+                <section class="pokemon__status">
+                    <h2>{{poke.nome}} </h2>
+                </section>
+                <section class="pokemon__image">
+                    <img [src]="poke.img" [alt]="poke.nome">
+
+                </section>
+            </a>
+        </li>
+    </ul>
+</main>
