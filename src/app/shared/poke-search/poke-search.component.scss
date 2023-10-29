@@ -19,4 +19,30 @@
             color:var(--branco);
         }
     }
+    .query {
+        width:100%;
+        display: inline-block;
+        select{
+            float:right;
+            margin-bottom:50px;
+            border:none;
+            border-radius:5px;
+            margin-left:10px;
+            padding:6px;
+            width:100px;
+            outline: none;
+            text-align: center;
+            background-color: rgba(255,255,255,0.15);
+            color:white;
+            option {
+                background-color: rgba(255,255,255,0.15);
+                color:black;
+                border:none;
+                border-radius:5px;
+                padding:6px;
+            }
+        }
+        margin-top:10px;
+        margin-bottom:-50px;
+    }
 }

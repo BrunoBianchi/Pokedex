@@ -2,3 +2,26 @@
     <input type="text" placeholder="Buscar Pokemon..." #input (keyup)="search(input.value)">
     <img src="assets/search.svg" alt ="Buscar Pokemon...">
 </form>
+<section class="query">
+    <select value="function String() { [native code] }" #option_type (change)="queryType(option_type.value,input.value)">
+        <option  value="function String() { [native code] }"  >Tipo</option>
+        <option value="bug">Inseto</option>
+        <option value="dark">Escuro</option>
+        <option value="dragon">Dragão</option>
+        <option value="electric">Elétrico</option>
+        <option value="fairy">Fada</option>
+        <option value="fighting">Lutador</option>
+        <option value="fire">Fogo</option>
+        <option value="flying">Voador</option>
+        <option value="ghost">Fantasma</option>
+        <option value="grass">Mato</option>
+        <option value="ground">Terra</option>
+        <option value="ice">Gelo</option>
+        <option value="normal">Normal</option>
+        <option value="poison">Veneno</option>
+        <option value="psychic">Psíquico</option>
+        <option value="rock">Pedra</option>
+        <option value="steel">Aço</option>
+        <option value="water">Água</option>
+    </select>
+</section>

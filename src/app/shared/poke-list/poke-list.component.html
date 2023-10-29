@@ -1,6 +1,6 @@
   <!--Search -->
-  <app-poke-search (emitSearch)="getSearch($event)"></app-poke-search>
-  <section class="listagem">
+  <app-poke-search (emitSearch)="getSearch($event)" (emitQuery)="getQuery($event)"></app-poke-search>
+  <section class="listagem" *ngIf="getAllPokemons?.length >0">
     <ng-template ngFor let-pokemon [ngForOf]="getAllPokemons">
         <a [routerLink]="['details',pokemon.status.id]" class="pokemon" *ngIf="pokemon.status">
             <section class="pokemon__status">
@@ -17,10 +17,13 @@
         </a>
     </ng-template>
   </section>
+  <section  *ngIf="getAllPokemons?.length<=0">
+    <h1 style="text-align: center;color:white;margin:20px;font-size:30px;">Nenhum Pokemon Encontrado!</h1>
+  </section>
   <section class="loadmore">
     <span>
         <img class="pokeball disable" [ngClass]="{'disable':!loading}" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/800px-Pok%C3%A9_Ball_icon.svg.png">
-        <button (click)="loadMore(filterString)">{{loadTxt}}</button>
+        <button (click)="loadMore(filter)">{{loadTxt}}</button>
     </span>
 
   </section>
