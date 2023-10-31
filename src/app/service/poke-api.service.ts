@@ -34,4 +34,9 @@ export class PokeApiService {
       res=>res,
     )
   }
+  public apiGetEvolutions(url:string):Observable<any> {
+    return this.http.get<any>(url).pipe(
+      res=>res,
+    )
+  }
 }

@@ -8,6 +8,7 @@ import { Component,EventEmitter,Output } from '@angular/core';
 export class PokeSearchComponent  {
   @Output() public emitSearch: EventEmitter<String> = new EventEmitter();
   @Output() public emitQuery: EventEmitter<String> = new EventEmitter();
+  @Output() public emitQnt: EventEmitter<String> = new EventEmitter();
   public search(value:string) {
     this.emitSearch.emit(value)
   }
@@ -22,5 +23,9 @@ if(value == '') return;
     data.sort = '';
     data.name = name;
     this.emitQuery.emit(data);
+  }
+  public qntSearch(value:string) {
+
+    this.emitQnt.emit(value.toString());
   }
 }

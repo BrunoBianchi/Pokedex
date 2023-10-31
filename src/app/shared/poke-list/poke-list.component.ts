@@ -13,6 +13,7 @@ export class PokeListComponent implements OnInit {
   public index: number = 1;
   public loading: boolean = false;
   public loadTxt: string = 'Carregar Mais';
+  public qntOption:number = 6;
   public filter: any = {
     name: String,
     type: String,
@@ -76,6 +77,9 @@ export class PokeListComponent implements OnInit {
     }
     return;
   }
+  public getQnt(value:any) {
+    this.qntOption = value;
+  }
   public getSearch(value: any) {
     this.filter.name = value;
     let filter = this.setAllPokemons
@@ -89,7 +93,7 @@ export class PokeListComponent implements OnInit {
           })
         })
       }
-      this.getAllPokemons = filter.splice(0,this.index*6);
+      this.getAllPokemons = filter.splice(0,this.index*this.qntOption);
   }
   public getQuery(value: any) {
     this.filter.type = value.type;
@@ -99,10 +103,11 @@ export class PokeListComponent implements OnInit {
           return t.type.name == value.type;
         });
       })
-      .slice(0, 6 * this.index);
+      .slice(0, this.qntOption * this.index);
     this.getAllPokemons = filter;
   }
   public loadMore(filter?: any) {
+    console.log(this.qntOption);
     if(filter.name.toString() == "function String() { [native code] }") {
       filter.name = "";    
     }
@@ -128,7 +133,7 @@ export class PokeListComponent implements OnInit {
           })
         this.getAllPokemons =  result;
       }else if(filter.name == "" && filter.type == "" || filter.name !="" && filter.type == "") {
-        this.getAllPokemons = this.pokeArray.splice(0,this.index*6);
+        this.getAllPokemons = this.pokeArray.splice(0,this.index*this.qntOption);
       }else if(filter.name == "" && filter.type != "") {
         const result = this.setAllPokemons
         .filter((res: any) => {
@@ -138,7 +143,7 @@ export class PokeListComponent implements OnInit {
         })
         .slice(0, 6 * this.index);
         if(result.lengt <=0) {
-          this.getAllPokemons = this.pokeArray.splice(0,6);
+          this.getAllPokemons = this.pokeArray.splice(0,this.qntOption);
         }else {
           this.getAllPokemons = result;
         }
@@ -154,7 +159,7 @@ export class PokeListComponent implements OnInit {
     this.pokeApiService.apiListAllPokemons.subscribe((res) => {
       this.pokeArray = res.results;
       this.setAllPokemons = res.results;
-      this.getAllPokemons = res.results.slice(0, 6);
+      this.getAllPokemons = res.results.slice(0, this.qntOption);
     });
   }
 }

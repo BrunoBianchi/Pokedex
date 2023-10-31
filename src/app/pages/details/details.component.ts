@@ -14,15 +14,11 @@ export class DetailsComponent implements OnInit {
   public pokemon :any;
   public isLoading:boolean = false;
   public apiError:boolean= false;
+  public evolution:any;
   constructor(
     private activatedRoute:ActivatedRoute,
     private pokeApiService:PokeApiService
     ) {}
-
-  ngOnInit(): void {
-      this.getPokemon;
-
-  }
     get getPokemon() {
       const id = this.activatedRoute.snapshot.params['id'];
       const pokemon = this.pokeApiService.apiGetPokemons(`${this.urlPokemon}/${id}`);
@@ -33,4 +29,11 @@ export class DetailsComponent implements OnInit {
       )
     }
 
+
+    public evolve(value:string) {
+
+    }
+  ngOnInit(): void {
+    this.getPokemon;
+}
 }
