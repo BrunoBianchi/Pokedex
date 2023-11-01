@@ -139,4 +139,20 @@
 		}
 		  
 	}
+	#myProgress {
+		width: 70%;
+		height: 20px;
+		background-color: #454758;
+		border-radius:5px;
+	  }
+	  
+	  #myBar {
+		height: 20px;
+		border-radius:5px;
+		background-color: #ff5473;
+		text-align: center;
+		line-height: 20px;
+		color: white;
+	  }
+
 }

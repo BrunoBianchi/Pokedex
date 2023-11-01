@@ -9,6 +9,7 @@
         text-decoration: none;
         color:black;
     }
+
     .pokemon {
         position: relative;
         display: flex;
@@ -47,6 +48,7 @@
                     &:hover {
                         cursor:pointer;
                         background-color: #f0eaea;
+                        
                     }
                 }
             }
@@ -64,6 +66,10 @@
             img {
                 width:rem-calc(60);
             }
+        }
+        &:hover {
+            animation: up .2s ease-in-out forwards; 
+
         }
     }
 
@@ -99,7 +105,14 @@
         transform-origin: center;
         animation: rotate 2s ease-in-out infinite;
       }
-      
+      @keyframes up {
+        0%{
+         margin-top:0px;
+        }
+        100% {
+            margin-top:-5px;
+        }
+      }
       @keyframes rotate {
          0% {
           transform: rotate(0deg) scale(1);
